@@ -1,3 +1,5 @@
+#lang reader "bf-reader.rkt"
+
 inc 6 begin fwd inc 12 rwd dec end fwd write
 fwd inc 10 begin fwd inc 10 rwd dec end fwd inc write
 inc 7 write write inc 3 write fwd inc 4 begin fwd inc 11 rwd dec end fwd write
