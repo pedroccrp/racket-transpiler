@@ -1,0 +1,11 @@
+#lang br
+
+(require "assembly-lexer.rkt" brag/support)
+
+(define (make-tokenizer ip [path #f])
+    (port-count-lines! ip)
+    (lexer-file-path path)
+    (define (next-token) (assembly-lexer ip))
+    next-token)
+
+(provide make-tokenizer)
