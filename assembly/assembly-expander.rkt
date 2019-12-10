@@ -30,6 +30,18 @@
 
 (provide assembly-hidden-reg)
 
+(define-macro (assembly-loop "while" BODY ... "wendy")
+  #'(lambda (arr regs)
+      (for/fold ([current-apl (list arr regs)])
+                ([i (in-naturals)]
+                 #:break (<= (apply while current-apl) 0))
+        (define ret (fold-funcs current-apl (list BODY ...)))
+        (define old-value (get-byte (cadr ret) 4))
+        (define new-regs (set-byte (cadr ret) 4 (- old-value 1)))
+        (list (car ret) new-regs)))
+)
+(provide assembly-loop)
+
 ;; Op Codes
 
 (define-macro-cases assembly-op
@@ -73,6 +85,10 @@
   (vector-ref arr ptr))
 
 ;; Op Codes Defines
+
+(define (while arr regs)
+    (define stop-reg (get-byte regs 4))
+    stop-reg)
 
 (define (get-register-index reg)
     (cond

@@ -2,8 +2,10 @@
 
 move br 10 
 move cr 20 
-add br cr
+move dr 20 
+while
+add dr cr
+wendy
 print br
-move cr 3
-sub br cr
-print br
+print cr
+print dr

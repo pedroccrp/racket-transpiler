@@ -7,7 +7,7 @@
 (define assembly-lexer
     (lexer-srcloc
         [(:or "\n" whitespace) (token lexeme #:skip? #t)]
-        [(:or "move" "load" "store" "add" "sub" "inc" "dec" "jump" "jmpc" "print") (token lexeme lexeme)]
+        [(:or "move" "load" "store" "add" "sub" "inc" "dec" "jump" "jmpc" "print" "while" "wendy") (token lexeme lexeme)]
         [(:or "br" "cr" "dr") (token lexeme lexeme)]
         [digits (token 'INTEGER (string->number lexeme))]
     )
