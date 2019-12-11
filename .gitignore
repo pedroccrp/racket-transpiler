@@ -1,0 +1,4 @@
+# Ignore the parsed.cpp generated files
+*/entrada.in
+*/saida.out
+*/a.out
